@@ -8,6 +8,13 @@ public class App {
         
         // scanner
         Scanner kb = new Scanner(System.in);
+        System.out.println("Enter a double: ");
+        double db = kb.nextDouble();
+        System.out.println(db);
+        
+        System.out.println("Enter a int: ");
+        int i = kb.nextInt();
+        System.out.println(i);
         
         
     }
