@@ -13,9 +13,12 @@ public class App {
         System.out.println(db);
         
         System.out.println("Enter a int: ");
-        int i = kb.nextInt();
+        int i = kb.nextInt(); // reads until a newline character
         System.out.println(i);
         
+        System.out.println("Enter a string: ");
+        String s2 = kb.next(); // reads just a single word
+        System.out.println(s2);
         
     }
 }
