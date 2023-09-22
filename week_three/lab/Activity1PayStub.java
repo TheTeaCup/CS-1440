@@ -1,33 +1,33 @@
-import java.util.Scanner; 
+import java.util.Scanner;
 
-/** * Activity1PayStub class is part of Lab 3 and 
- * creates a simple pay stub. 
- * 
- * @author Hunter_Wilson 
- * @version 9.12.2023 
- */ 
-public class Activity1PayStub 
-{ 
+/**
+ * Activity1PayStub class is part of Lab 3 and
+ * creates a simple pay stub.
+ *
+ * @author Hunter_Wilson
+ * @version 9.12.2023
+ */
+public class Activity1PayStub {
     public static final double OVERTIME_RATE = 1.5;
     public static final double SS_RATE = 0.1;
-    public static final double TAX_RATE = 0.2; 
+    public static final double TAX_RATE = 0.2;
+
     /**
      * It all starts with the main method.
      *
      * @param args command-line arguments (not used)
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         String employeeName;
         String employeeSSN;
         int hours;
         int hoursOvr;
         double hourlyRat;
         double regularPay;
-        double overtimePayRate; 
+        double overtimePayRate;
         double overtimePay;
-        double ssHolding; 
-        double fedTax; 
+        double ssHolding;
+        double fedTax;
         double netPay;
         double grossPay;
 
@@ -48,7 +48,7 @@ public class Activity1PayStub
         System.out.print("Enter Hourly Pay Rate: ");
         hourlyRat = scan.nextDouble();
 
-        regularPay = (double) hours * (double) hourlyRat;
+        regularPay = (double) hours * hourlyRat;
         overtimePayRate = hourlyRat * OVERTIME_RATE;
         overtimePay = hoursOvr * overtimePayRate;
         grossPay = regularPay + overtimePay;

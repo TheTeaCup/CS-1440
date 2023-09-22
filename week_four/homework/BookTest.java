@@ -1,7 +1,9 @@
-import static org.junit.Assert.fail;  
+import static org.junit.Assert.fail;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.lang.reflect.Method;
 import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
@@ -19,45 +21,40 @@ import java.util.List;
  * @version 20.2.2021
  */
 
-public class BookTest
-{
-private PrintStream oldSystemOut;
-    
+public class BookTest {
+    private PrintStream oldSystemOut;
+
     /**
      * Constructor.
      */
-    public BookTest()
-    {
+    public BookTest() {
         oldSystemOut = null;
     }
-    
+
     /**
      * Sets up the test fixture.
-     *
+     * <p>
      * Called before every test case method.
      */
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         oldSystemOut = System.out;
     }
-    
+
     /**
      * Tears down the test fixture.
-     *
+     * <p>
      * Called after every test case method.
      */
     @After
-    public void tearDown()
-    {
-        resetStreams();       
+    public void tearDown() {
+        resetStreams();
     }
-    
-     /**
+
+    /**
      * Resets I/O streams.
      */
-    private void resetStreams()
-    {
+    private void resetStreams() {
         System.setOut(oldSystemOut);
     }
 
@@ -65,48 +62,40 @@ private PrintStream oldSystemOut;
      * Tests for existance of the PersonalInfo class.
      */
     @Test
-    public void testBookClassExists()
-    {
+    public void testBookClassExists() {
         Class c;
-        try
-        {
+        try {
             c = Class.forName("Book");
-        } 
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             fail("Book: unable to perform test. "
-                + "Did you name the class correctly?");
+                    + "Did you name the class correctly?");
         }
     }
-    
+
     /**
-     * Tests getAuthor accessor method 
+     * Tests getAuthor accessor method
      * and setAuthor mutator method.
      */
     @Test
-    public void testGetSetAuthor()
-    {
+    public void testGetSetAuthor() {
         Book book = new Book();
         book.setAuthor("Harlan Coben");
         String bookAuthor = book.getAuthor();
-        if(!bookAuthor.equals("Harlan Coben"))
-        {
+        if (!bookAuthor.equals("Harlan Coben")) {
             fail("The thing should be Harlan Coben not " + bookAuthor);
         }
     }
-    
+
     /**
      * Tests getTitle accessor method
      * and setTitle mutator method.
      */
     @Test
-    public void testGetSetTitle()
-    {
+    public void testGetSetTitle() {
         Book book = new Book();
         book.setTitle("No Second Chance");
         String bookTitle = book.getTitle();
-        if(!bookTitle.equals("No Second Chance"))
-        {
+        if (!bookTitle.equals("No Second Chance")) {
             fail("The thing should be Six Years not " + bookTitle);
         }
     }
@@ -116,47 +105,41 @@ private PrintStream oldSystemOut;
      * and setPages mutator method.
      */
     @Test
-    public void testGetSetPages()
-    {
+    public void testGetSetPages() {
         Book book = new Book();
         book.setPages(245);
         int bookPages = book.getPages();
-        if(bookPages != 245)
-        {
+        if (bookPages != 245) {
             fail("The thing should be 245 not " + bookPages);
         }
     }
-    
+
     /**
      * Tests getPublisher accessor method
      * and setPublisher mutator method.
      */
     @Test
-    public void testGetSetPublisher()
-    {
+    public void testGetSetPublisher() {
         Book book = new Book();
         book.setPublisher("Dutton");
         String bookPublisher = book.getPublisher();
-        if(!bookPublisher.equals("Dutton"))
-        {
+        if (!bookPublisher.equals("Dutton")) {
             fail("The thing should be Dutton not " + bookPublisher);
         }
     }
-    
+
     /**
      * Tests getPhoneNumber accessor method
      * and setPhoneNumber mutator method.
      */
     @Test
-    public void testGetSetPhoneNumber()
-    {
+    public void testGetSetPhoneNumber() {
         Book book = new Book();
         book.setPhoneNumber("9803332265");
         String bookPhoneNumber = book.getPhoneNumber();
-        if(!bookPhoneNumber.equals("9803332265"))
-        {
+        if (!bookPhoneNumber.equals("9803332265")) {
             fail("The thing should be 9803332265 not " + bookPhoneNumber);
         }
     }
-    
+
 }

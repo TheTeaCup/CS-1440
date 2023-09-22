@@ -1,7 +1,5 @@
-public class Variable
-{
-    public static void main(String[] args)
-    {
+public class Variable {
+    public static void main(String[] args) {
         int value;
         value = 5;
         System.out.print("The value is ");
