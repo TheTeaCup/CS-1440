@@ -1,3 +1,5 @@
+package lab;
+
 public class Snowperson
 {
     public static void main(String[] args)
