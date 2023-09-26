@@ -1,7 +1,22 @@
 import java.util.Scanner;
 
+/**
+ * MonetaryUnits Class.
+ *
+ * @author Hunter.Wilson
+ * @version 09.25.2023
+ */
+
 public class MonetaryUnits {
+    /**
+     * Main statement.
+     * This gets an amount from a user,
+     * and tells them the monetary units.
+     *
+     * @param args none collected
+     */
     public static void main(String[] args) {
+
         Scanner kb = new Scanner(System.in);
         System.out.println("Enter an amount in double for dollars: $");
         double money = kb.nextDouble();
@@ -29,5 +44,6 @@ public class MonetaryUnits {
         System.out.printf("\t%d dimes\n", dimes);
         System.out.printf("\t%d nickels\n", nickles);
         System.out.printf("\t%d pennies\n", pennies);
+
     }
 }
