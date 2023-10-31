@@ -1,5 +1,4 @@
-public enum StudentYear
-{
+public enum StudentYear {
     FRESHMAN,
     SOPHOMORE,
     JUNIOR,

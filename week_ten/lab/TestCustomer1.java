@@ -1,5 +1,5 @@
 /**
- * TestPrelab1.java
+ * TestCustomer1.java
  */
 
 import static org.junit.Assert.fail;
@@ -29,14 +29,11 @@ import org.junit.rules.Timeout;
  * such as java.util.Scanner
  *
  * @author Joel Swanson
- * @version 03.07.2014
+ * @version 03.08.2014
  */
 
-
 @SuppressWarnings("unchecked")
-public class TestPrelab1 {
-    //import org.junit.Rule;
-//import org.junit.rules.Timeout;
+public class TestCustomer1 {
     @Rule
     public Timeout timeout = new Timeout(30000);
 
@@ -51,48 +48,17 @@ public class TestPrelab1 {
      * Test Scene class from activity 4.
      */
     @Test
-    public void checkPrelab1() {
-        //checkStyle();
-        //checkPrevious();
-        checkSilent();
-        //printGrade(6);
-    }
-
-    /**
-     * Run previous tests; TestHouseActivity2.
-     */
-    public void checkPrevious() {
-    }
-
-    /**
-     * Test for style issues in all classes.
-     */
-    private void checkStyle() {
-        //StyleTest styleTest = new StyleTest();
-        //styleErrors = styleTest.checkFile("Pilot.java");
-    }
-
-    /**
-     * Run all tests.
-     */
-    public void checkSilent() {
-        check();
-    }
-
-    /**
-     * Test fields, accessors, and mutators.
-     */
-    public void check() {
+    public void checkCustomer1() {
         fail = false;
 
         //Check this class
-        className = "Pilot";
+        className = "Customer";
 
         //Check these fields
         fields = new String[]
                 {
                         "name", "String",
-                        "license", "String"
+                        "ssn", "String"
                 };
 
         printHeader();
@@ -100,23 +66,20 @@ public class TestPrelab1 {
         checkClass();
         checkFieldNumber(2, 2);
         checkFields();
-        checkConstructor();
         checkConstructor("String", "String");
+        checkConstructor("Customer");
         checkAccessors();
         checkMutators();
         //checkMain();
-        //CheckMethod parameters
+        //CheckMethod parameters 
         //1. Name of method
         //2. Return type
         //3, 4, ... parameter list of types. None if no parameters.
-        checkMethod("copy", "Pilot");
-        checkMethod("equals", "boolean", "Pilot");
         checkMethod("toString", "String");
-        checkNoCopyConstructor(Pilot.class);
-
+        checkNoMethod("copy", "Customer");
         if (fail) {
             //printGrade(4);
-            fb += "Fail in TestPrelab1.\n";
+            fb += "Fail in TestCustomer1.\n";
             fb += "Errors exist. See terminal for details.";
             fail(fb);
         }
@@ -146,7 +109,7 @@ public class TestPrelab1 {
             System.out.println("X : " + className + " class does not exist.");
             System.out.println("No further checks are possible"
                     + " without a " + className + " class to check.");
-            fb += "Fail in TestPrelab1.\n";
+            fb += "Fail in TestCustomer1.\n";
             fb += className + " class does not exist.\n";
             fb += "You must have a class in your project named "
                     + className + ".\n";
@@ -306,7 +269,6 @@ public class TestPrelab1 {
 
         try {
             Method method = testClass.getMethod(name, typeArray);
-
             if (getTypeClass(expectedReturn) != method.getReturnType()) {
                 System.out.println("X : Method named \""
                         + name + "\" should have a return type of "
@@ -329,6 +291,36 @@ public class TestPrelab1 {
             fail = true;
         }
     }
+
+    /**
+     * Tests for a constructor with a given number and
+     * type of parameters and makes sure it DOESNT exist.
+     *
+     * @param name           Search for a method with this name.
+     * @param expectedReturn Expected type of the return.
+     * @param parameters     A variable list of parameter types
+     *                       as Strings.  Put any types and this method will
+     *                       attempt to find a constructor with those types in
+     *                       the specified order.
+     */
+    private void checkNoMethod(String name, String expectedReturn,
+                               String... parameters) {
+        Class[] typeArray = getTypeClassArray(parameters);
+
+        try {
+            Method method = testClass.getMethod(name, typeArray);
+
+            if (getTypeClass(expectedReturn) == method.getReturnType()) {
+                System.out.println("X : Method named \""
+                        + name + "\" found.  You SHOULD NOT HAVE"
+                        + " that method in your class.  Delete it!");
+                fail = true;
+            }
+        } catch (Exception e) {
+            System.out.println("");
+        }
+    }
+
 
     /**
      * Return the parameters as a comma separated list
@@ -380,9 +372,9 @@ public class TestPrelab1 {
     }
 
     /**
-     * Test class for a specific field name and correct type.
+     * Test  class for a specific field name and correct type.
      *
-     * @param name         Make sure Chalk has a field of this name.
+     * @param name         Make sure  has a field of this name.
      * @param expectedType Make sure the name field has this type.
      */
     private void checkOneField(String name, String expectedType) {
@@ -411,7 +403,7 @@ public class TestPrelab1 {
     }
 
     /**
-     * Test class for a specific accessor for existance and type.
+     * Test the class for a specific accessor for existance and type.
      *
      * @param name         The expected name of the accessor.
      * @param expectedType The expected return type of the accessor
@@ -446,7 +438,7 @@ public class TestPrelab1 {
                 }
             }
 
-            //We found the correct name and it is stored in m.
+            //We found the correct name and it is stored in m.  
             //Determine if it has incorrect parameters or is private.
             if (found) {
                 if (Modifier.isPrivate(m.getModifiers())) {
@@ -468,7 +460,7 @@ public class TestPrelab1 {
     }
 
     /**
-     * Test class for a specific accessor for existance and type.
+     * Test the class for a specific accessor for existance and type.
      *
      * @param name         The expected name of the accessor.
      * @param expectedType The expected parameter type of the accessor

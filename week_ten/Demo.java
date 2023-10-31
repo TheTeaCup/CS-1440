@@ -1,8 +1,5 @@
-
-public class Demo
-{
-    public static void main(String[] args)
-    {
+public class Demo {
+    public static void main(String[] args) {
         Student tim = new Student("900", "Tim");
         System.out.println(tim);
         System.out.println("Ordinal for Tim: " + tim.getYear().ordinal());
@@ -13,22 +10,15 @@ public class Demo
 
         StudentYear timYear = tim.getYear();
         StudentYear taylorYear = taylor.getYear();
-        if (timYear.equals(taylorYear))
-        {
+        if (timYear.equals(taylorYear)) {
             System.out.println("They are in the same year!");
-        }
-
-        else if (timYear.compareTo(taylorYear) > 0)
-        {
+        } else if (timYear.compareTo(taylorYear) > 0) {
             System.out.println("Tim is closer to graduating!");
-        }
-        else
-        {
+        } else {
             System.out.println("Taylor is closer to graduating!");
         }
 
-        switch (taylorYear)
-        {
+        switch (taylorYear) {
             case FRESHMAN:
                 System.out.println("Taylor is a first-year student");
                 break;
