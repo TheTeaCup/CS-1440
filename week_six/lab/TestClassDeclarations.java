@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 /**
- * Test WeatherComputation activity 3 operations.
+ * Test WeatherComputation.java activity 3 operations.
  *
  * Check for the existance and type of each field.
  * Check for the existance and return type of
