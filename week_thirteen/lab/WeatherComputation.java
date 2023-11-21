@@ -1,17 +1,30 @@
 
 /**
- * WeatherMonth Class.
- * Builds the Weather for a month.
- * @author Hunter Wilson
- * @version 11.20.2023
+ * WeatherComputation.java
+ */
+
+//Put any imports below this line.
+
+/**
+ * Static methods library which compute averages and other
+ * computations on integer arrays of temperatures.
+ * 
+ * @author Joel Swanson 
+ * @version 03.29.2014
  */
 public class WeatherComputation
-{
-    public static double averageTemperature(int[] temperature)
-    {
+{    
+    /**
+     * Average an array of temperatures.
+     * @param temperatures An array storing temperatures as ints.
+     * @return Returns the average of the array of ints.
+     */
+    public static double averageTemperature(int[] temperatures)
+    {   
         double sum = 0;
         int count = 0;
-        for (int temp : temperature)
+        
+        for (int temp : temperatures)
         {
             if (temp != -999)
             {
@@ -19,16 +32,24 @@ public class WeatherComputation
                 count++;
             }
         }
+        
         if (count == 0)
         {
             return 0;
         }
+        
         return sum / count;
     }
 
+    /**
+     * Find the highest in an array of temperatures.
+     * @param temperatures An array storing temperatures as ints.
+     * @return The largest value from the the array of ints.
+     */
     public static int highestTemperature(int[] temperatures)
-    {
+    {      
         int highest = Integer.MIN_VALUE;
+        
         for (int temp : temperatures)
         {
             if (temp != -999 && temp > highest)
@@ -36,12 +57,19 @@ public class WeatherComputation
                 highest = temp;
             }
         }
+        
         return highest;
-    }
+    }  
 
+    /**
+     * Find the lowest in an array of temperatures.
+     * @param temperatures An array storing temperatures as ints.
+     * @return The lowest value from the the array of ints.
+     */
     public static int lowestTemperature(int[] temperatures)
     {
         int lowest = Integer.MAX_VALUE;
+        
         for (int temp : temperatures)
         {
             if (temp != -999 && temp < lowest)
@@ -49,13 +77,20 @@ public class WeatherComputation
                 lowest = temp;
             }
         }
+        
         return lowest;
-    }
+    }    
 
-    public static int numberMissing(int[] temperature)
-    {
+    /**
+     * Return the total number of missing days.  That is days with
+     * -999 recorded as the temperatures.
+     * @param temperatures An array storing temperatures as ints.
+     * @return The number of -999s found.
+     */
+    public static int numberMissing(int[] temperatures)
+    {       
         int count = 0;
-        for (int temp : temperature)
+        for (int temp : temperatures)
         {
             if (temp == -999)
             {
@@ -63,8 +98,14 @@ public class WeatherComputation
             }
         }
         return count;
-    }
+    } 
 
+    /**
+     * Calculate heating degree day.
+     * @param max The highest temperature for a given day.
+     * @param min The lowest temperature for a given day.
+     * @return heating degree day data for this day.
+     */
     public static double hdd(int max, int min)
     {
         if (max == -999 || min == -999 || max < min)
@@ -84,6 +125,12 @@ public class WeatherComputation
         }
     }
 
+    /**
+     * Calculate cooling degree day.
+     * @param max The highest temperature for a given day.
+     * @param min The lowest temperature for a given day.
+     * @return cooling degree day data for this day.
+     */
     public static double cdd(int max, int min)
     {
         if (max == -999 || min == -999 || max < min)
@@ -101,36 +148,57 @@ public class WeatherComputation
         {
             return 0.0;
         }
-    }
+    }    
 
-    public static double monthHdd(int[] maxTemperature, int[] minTemperature) {
+    /**
+     * Sum monthly heating degree days.
+     * @param max An array with the highest temperatures for each day
+     * in a given month.
+     * @param min An array with the lowest temperatures for each day
+     * in a given month.
+     * @return The sum of the heating degree days.
+     */
+    public static double monthHdd(int[] max, int[] min)
+    {
         double totalHdd = 0.0;
 
-        for (int i = 0; i < maxTemperature.length; i++)
+        for (int i = 0; i < max.length; i++)
         {
-            totalHdd += hdd(maxTemperature[i], minTemperature[i]);
+            totalHdd += hdd(max[i], min[i]);
         }
 
-        return totalHdd;
+        return totalHdd;   
     }
 
-    public static double monthCdd(int[] maxTemperature, int[] minTemperature) {
+    /**
+     * Sum monthly cooling degree days.
+     * @param max An array with the highest temperatures for each day
+     * in a given month.
+     * @param min An array with the lowest temperatures for each day
+     * in a given month.
+     * @return The sum of the cooling degree days.
+     */
+    public static double monthCdd(int[] max, int[] min)
+    {
         double totalCdd = 0.0;
 
-        for (int i = 0; i < maxTemperature.length; i++)
+        for (int i = 0; i < max.length; i++)
         {
-            totalCdd += cdd(maxTemperature[i], minTemperature[i]);
+            totalCdd += cdd(max[i], min[i]);
         }
 
-        return totalCdd;
-    }
+        return totalCdd;       
+    }    
 
+    /**
+     * @param args not used
+     */
     public static void main(String[] args)
     {
-        int[] test_array = {30,10,-999,20,40,-999,50};
-        System.out.print(averageTemperature(test_array) + ", ");
-        System.out.print(highestTemperature(test_array) + ", ");
-        System.out.print(lowestTemperature(test_array) + ", ");
-        System.out.print(numberMissing(test_array));
+        int[] testArray = {20, -999, 10, 50, -999, 40, 30};
+        System.out.print(averageTemperature(testArray) + ", ");
+        System.out.print(highestTemperature(testArray) + ", ");
+        System.out.print(lowestTemperature(testArray) + ", ");
+        System.out.print(numberMissing(testArray));
     }
 }
